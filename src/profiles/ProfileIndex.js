@@ -3,6 +3,7 @@ import {Container, Row, Col} from 'reactstrap'
 import ProfileCreate from './ProfileCreate';
 import ProfileShow from './ProfileShow';
 import ProfileEdit from './ProfileEdit';
+import APIURL from '../helpers/environment'
 
 
 const ProfileIndex = (props) => {
@@ -42,7 +43,7 @@ const ProfileIndex = (props) => {
     const fetchUserProfile = () => {
         console.log('Fetching authenticated user profile');
             console.log(props.token)
-        fetch('http://localhost:3000/profile/myprofile' , {
+        fetch(`${APIURL}/profile/myprofile` , {
             method: 'GET',
             headers: new Headers({
                 'Content-Type':'application/json',

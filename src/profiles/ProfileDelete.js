@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Modal, ModalHeader, ModalBody, Button} from 'reactstrap'
+import APIURL from '../helpers/environment'
 
 
 const ProfileDelete = (props) => {
@@ -10,7 +11,7 @@ const ProfileDelete = (props) => {
 
      const ProfileTerminate = (e) => {
          e.preventDefault()
-        fetch('http://localhost:3000/profile/myprofile', {
+        fetch(`${APIURL}/profile/myprofile`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

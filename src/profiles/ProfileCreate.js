@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
-
+import APIURL from '../helpers/environment'
 
 const ProfileCreate = (props) => {
     const [queenName, setQueenName]= useState('');
@@ -16,7 +16,7 @@ const ProfileCreate = (props) => {
 
     const handleSubmit =(e)=> {
         e.preventDefault();
-        fetch('http://localhost:3000/profile/create', {
+        fetch(`${APIURL}/profile/create`, {
             method: 'POST',
             body: JSON.stringify({queenName:queenName, birthName:birthName, homeTown:homeTown, currentTown:currentTown, about:about, accolades:accolades, upcomingShows:upcomingShows}),
             headers: new Headers({

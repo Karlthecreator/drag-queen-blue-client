@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Modal, ModalBody, ModalHeader, ModalFooter, Form, FormGroup, Label, Input} from 'reactstrap';
 import ProfileDelete from './ProfileDelete';
+import APIURL from '../helpers/environment'
 
 
 const ProfileEdit = (props) => {
@@ -24,7 +25,7 @@ const ProfileEdit = (props) => {
     const ProfileUpdate = (e) => {
         console.log('hitting the update!')
         e.preventDefault();
-        fetch("http://localhost:3000/profile/myprofile" , {
+        fetch(`${APIURL}/profile/myprofile` , {
             method: 'PUT',
             body: JSON.stringify({
                 queenName: editQueenName, 
