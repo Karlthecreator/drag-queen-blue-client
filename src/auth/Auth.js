@@ -9,7 +9,7 @@ import Signup from './Signup';
 const Auth = (props) => {
     
     // const title = () => {
-    //     return Signin ? 'Signin' : 'Signup'
+    //     return Signin ? <Signin/> : <Signup/>
     // }
 
    

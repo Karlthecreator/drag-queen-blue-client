@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import {Button, Modal, ModalBody, ModalHeader, ModalFooter, Form, FormGroup, Label, Input} from 'reactstrap';
 import ProfileDelete from './ProfileDelete';
-import APIURL from '../helpers/environment'
+import APIURL from '../helpers/environment';
+import styled from 'styled-components';
+
+const Font = styled.div`
+    font-family: "Fugaz One", "cursive";
+    
+`
 
 
 const ProfileEdit = (props) => {
@@ -13,13 +19,14 @@ const ProfileEdit = (props) => {
     const [editAccolades, setEditAccolades]=useState(props.profile.accolades);
     const [editUpcomingShows, setEditUpcomingShows]=useState(props.profile.upcomingShows);
     const [modal, setModal]= useState(false);
-    const [deleteUp, setDeleteUp]= useState(false)
+    const [deleteUp, setDeleteUp]= useState(false);
+    const [editImage, setEditImage]=useState('');
 
     const toggle = () => setModal(!modal);
     const deletemodal = () => setDeleteUp(!deleteUp);
     
-    console.log(props.profile)
-
+    // console.log(props.profile)
+    // console.log(deleteUp)
     
 
     const ProfileUpdate = (e) => {
@@ -34,7 +41,8 @@ const ProfileEdit = (props) => {
                 currentTown: editCurrentTown, 
                 about: editAbout, 
                 accolades: editAccolades, 
-                upcomingShows: editUpcomingShows
+                upcomingShows: editUpcomingShows,
+                image: editImage
             }),
             headers: new Headers({
                 'Content-Type':'application/json',
@@ -54,8 +62,9 @@ const ProfileEdit = (props) => {
 
     return(
         <>
+        <Font>
         <Button onClick={toggle}>Edit</Button>
-        <Modal isOpen={modal} toggle={toggle}>
+        <Modal isOpen={modal} >
         <ModalHeader>Edit Profile</ModalHeader>
         <ModalBody>
             
@@ -86,17 +95,20 @@ const ProfileEdit = (props) => {
                 <Label htmlFor="upcomingshows">Upcoming Shows</Label>
                 <Input name="upcomingshows" value={editUpcomingShows} onChange={(e)=> setEditUpcomingShows(e.target.value)}/>
             </FormGroup>
+            <FormGroup>
+            <Label htmlFor="image">Image URL</Label>
+                <Input name="image" value={editImage} onChange={(e)=> setEditImage(e.target.value)}/>
+            </FormGroup>
         <ModalFooter>
-            {deleteUp ? <ProfileDelete profile={props.profile} token={props.token} fetchUserProfile={props.fetchUserProfile}/> : <></>}
+            {deleteUp ? <ProfileDelete deletemodal={deletemodal} fetchUserProfile={props.fetchUserProfile} toggle={toggle} profile={props.profile} token={props.token} fetchUserProfile={props.fetchUserProfile} toggle={toggle}/> : <></>}
         <Button color="danger" onClick={deletemodal}>DELETE</Button>
-        <Button color="info" type="submit">Save</Button>
+        <Button color="info" type="submit" onClick={toggle}>Save</Button>
         <Button color="info" onClick={toggle}>Cancel</Button>
         </ModalFooter>
         </Form>
         </ModalBody>
-        
-        
         </Modal>
+        </Font>
         </>
     )
 }

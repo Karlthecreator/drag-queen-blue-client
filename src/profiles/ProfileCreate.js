@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
-import APIURL from '../helpers/environment'
+import APIURL from '../helpers/environment';
+import styled from 'styled-components';
+
+const Font = styled.div`
+    font-family: "Fugaz One", "cursive";
+    
+`
 
 const ProfileCreate = (props) => {
     const [queenName, setQueenName]= useState('');
@@ -11,6 +17,7 @@ const ProfileCreate = (props) => {
     const [accolades, setAccolades]=useState('');
     const [upcomingShows, setUpcomingShows]=useState('');
     const [modal, setModal]= useState(false);
+    const [image, setImage]= useState('');
 
     const toggle = () => setModal(!modal);
 
@@ -18,7 +25,7 @@ const ProfileCreate = (props) => {
         e.preventDefault();
         fetch(`${APIURL}/profile/create`, {
             method: 'POST',
-            body: JSON.stringify({queenName:queenName, birthName:birthName, homeTown:homeTown, currentTown:currentTown, about:about, accolades:accolades, upcomingShows:upcomingShows}),
+            body: JSON.stringify({queenName:queenName, birthName:birthName, homeTown:homeTown, currentTown:currentTown, about:about, accolades:accolades, upcomingShows:upcomingShows, image:image}),
             headers: new Headers({
                 'Content-Type':'application/json',
                 'Authorization': props.token
@@ -33,6 +40,7 @@ const ProfileCreate = (props) => {
              setAbout('');
              setAccolades('');
              setUpcomingShows('');
+             setImage('');
              props.fetchUserProfile();
          })
     }
@@ -40,6 +48,7 @@ const ProfileCreate = (props) => {
 
     return(
         <>
+        <Font>
         <Button onClick={toggle}>Create</Button>
         <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader>Create Profile</ModalHeader>
@@ -71,6 +80,10 @@ const ProfileCreate = (props) => {
                 <Label htmlFor="upcomingshows">Upcoming Shows</Label>
                 <Input name="upcomingshows" value={upcomingShows} onChange={(e)=> setUpcomingShows(e.target.value)}/>
             </FormGroup>
+            <FormGroup>
+                <Label htmlFor="image">Image URL</Label>
+                <Input name="image" value={image} onChange={(e)=> setImage(e.target.value)}/>
+            </FormGroup>
             <ModalFooter>
             <Button color="info" type="submit">Create Profile</Button>
             <Button color="info" onClick={toggle}>Cancel</Button>
@@ -78,6 +91,7 @@ const ProfileCreate = (props) => {
         </Form>
         </ModalBody>
         </Modal>
+        </Font>
         </>
     )
 }

@@ -1,9 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'reactstrap'
 import ProfileCreate from './ProfileCreate';
 import ProfileShow from './ProfileShow';
 import ProfileEdit from './ProfileEdit';
-import APIURL from '../helpers/environment'
+import APIURL from '../helpers/environment';
+import styled from 'styled-components';
+
+
+const Font = styled.div`
+    font-family: "Fugaz One", "cursive";
+    
+`
 
 
 const ProfileIndex = (props) => {
@@ -35,9 +42,7 @@ const ProfileIndex = (props) => {
     //     })
     // }
 
-    // useEffect(()=> {
-    //     fetchUserProfile();
-    // }, [ ]);
+   
 
 
     const fetchUserProfile = () => {
@@ -57,32 +62,31 @@ const ProfileIndex = (props) => {
             setProfile(logData)
             
         })
-
-        // const myProfile = () => {
-        //     if()
-        // }
-
     
     }
 
-   
+    useEffect(()=> {
+              fetchUserProfile();
+          }, [ ]);
 
 
     return(
-        <Container>
+        <Font>
+        <Container className="background" >
+            
             <Row>
                 <Col md="3">
-                     {profile !== undefined ? <ProfileEdit token={props.token} profile={profile} fetchUserProfile={fetchUserProfile}/> : null}
+                     {(profile != undefined || profile != null) ? <ProfileEdit token={props.token} profile={profile} fetchUserProfile={fetchUserProfile}/> : null}
                 </Col>
                 <Col md="9">
-                    {console.log(profile)}
+                    {console.log(profile, typeof profile,)}
                     { 
-                    profile !== undefined ? <ProfileShow profile={profile} token={props.token} fetchUserProfile={fetchUserProfile}/> : <ProfileCreate fetchUserProfile={fetchUserProfile} token={props.token}/>
+                    (profile != undefined || profile != null) ? <ProfileShow profile={profile} token={props.token} fetchUserProfile={fetchUserProfile}/> : <ProfileCreate fetchUserProfile={fetchUserProfile} token={props.token}/>
                     }
                 </Col>
             </Row>
         </Container>
-        
+        </Font>
     )
 }
 

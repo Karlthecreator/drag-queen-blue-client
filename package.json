@@ -8,10 +8,16 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-payment": "^0.1.8",
     "react-scripts": "3.3.0",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "styled-components": "^5.0.0",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +39,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karlthecreator/drag-queen-blue-client.git"
+  },
+  "author": "Karl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Karlthecreator/drag-queen-blue-client/issues"
+  },
+  "homepage": "https://github.com/Karlthecreator/drag-queen-blue-client#readme"
 }

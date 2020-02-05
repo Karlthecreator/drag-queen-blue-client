@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import APIURL from '../helpers/environment'
+import styled from 'styled-components';
+
+const Font = styled.div`
+    font-family: "Fugaz One", "cursive";
+    
+`
 
 const SignUp = (props) => {
     const [email, setEmail]= useState('');
@@ -24,18 +30,19 @@ const SignUp = (props) => {
 
     return(
         <div>
-            <h1>Create Account</h1>
+            <Font>
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Label htmlFor="email">Email:</Label>
-                    <Input onChange={(e)=> setEmail(e.target.value)} name="email" value={email} placeholder="Email address here"/>
+                    <Label htmlFor="email"></Label>
+                    <Input onChange={(e)=> setEmail(e.target.value)} type="email" name="email" value={email} placeholder="EMAIL"/>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="password">Password:</Label>
-                    <Input onChange={(e)=> setPassword(e.target.value)} minlength="5" name="password" value={password} placeholder="SSSHHHHHHHHH!"/>
+                    <Label htmlFor="password"></Label>
+                    <Input onChange={(e)=> setPassword(e.target.value)} minLength="5" name="password" value={password} placeholder="PASSWORD"/>
                 </FormGroup>
                 <Button color="info" type="submit">Sign Up</Button>
             </Form>
+            </Font>
         </div>
     )
 }
