@@ -35,7 +35,7 @@ const Sitebar = (props) => {
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <Button color="warning" onClick={props.clickLogout} style={{align: "right"}}>Logout</Button>
+                        <Button color="warning" onClick={props.clickLogout}>Logout</Button>
                     </NavItem>
                 </Nav>
                 </Collapse>
