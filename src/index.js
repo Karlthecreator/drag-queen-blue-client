@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import WebFont from 'webfontloader';
+import WebFont from 'webfontloader';
 
-// WebFont.load({
-//     google: {
-//         families: ['Fugaz One:400', 'cursive']
-//     }
-// })
+WebFont.load({
+    google: {
+        families: ['Fugaz One:400', 'cursive']
+    }
+})
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
