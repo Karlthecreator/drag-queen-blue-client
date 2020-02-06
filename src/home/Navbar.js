@@ -10,6 +10,8 @@ const Font = styled.div`
 `
 const Dragbar = styled.h1`
     color: white;
+    font-size: 45px;
+    align:left;
     color: #fff;
         text-shadow: 2px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 `
@@ -28,9 +30,10 @@ const Sitebar = (props) => {
 
 
     return(
+    <Font>
         <Navbar color="info" light expand="md">
-            <img src={Ball} width="75px" height="75px" alt=""/>
-            <Font><Dragbar><h1>DragBar</h1></Dragbar>
+            <img src={Ball} width="60px" height="60px" alt=""/>
+                <Dragbar>DragBar</Dragbar>
             <NavbarToggler onClick={toggle}/>
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
@@ -39,8 +42,8 @@ const Sitebar = (props) => {
                     </NavItem>
                 </Nav>
                 </Collapse>
-                </Font>
         </Navbar>
+    </Font>
     )
 }
 
