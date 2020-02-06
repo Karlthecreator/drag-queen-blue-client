@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import styled from 'styled-components';
+// import PaymentForm from "./PaymentForm";
 
 
 
@@ -24,7 +25,7 @@ const ProfileShow = (props) => {
 
 
     return (
-        <Card style={{width: "90%"}}>
+        <Card>
             <Font>
                 <CardImg />
                 <CardBody>
